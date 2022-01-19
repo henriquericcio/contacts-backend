@@ -18,7 +18,11 @@ func (r *repoMemory) len() int {
 }
 
 func (r *repoMemory) getAll() []contact {
-	return r.m[:20]
+	if len(r.m) < 20 {
+		return r.m
+	} else {
+		return r.m[:20]
+	}
 }
 
 func (r *repoMemory) getByID(id string) contact {
